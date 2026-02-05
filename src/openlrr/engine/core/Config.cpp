@@ -239,7 +239,7 @@ const char* __cdecl Gods98::Config_BuildStringID(const char* s, ...)
 		std::strcat(configGlobs.s_JoinPath_string, CONFIG_SEPARATOR);
 		std::strcat(configGlobs.s_JoinPath_string, curr);
 	}
-	va_end(s);
+	va_end(args);
 
 	return configGlobs.s_JoinPath_string;
 }
