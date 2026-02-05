@@ -234,14 +234,14 @@ constexpr auto array_of(T&&... t) -> std::array<V, sizeof...(T)> {
 	enum_scoped(name)
 
 #define enum_scoped_forward_end(name) \
-	} using name = _ns_ ##name## :: ##name
+	} using name = _ns_ ##name::name
 
 #define flags_scoped(name) enum_scoped(name)
 
 
 #define enum_scoped_end(name, size) \
 	assert_sizeof(name, size); \
-	} using name = _ns_ ##name## :: ##name
+	} using name = _ns_ ##name::name
 
 #define flags_scoped_end(name, size) \
 	flags_enum(name); \
