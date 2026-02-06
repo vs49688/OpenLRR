@@ -27,6 +27,7 @@
 #include <ctime>
 #include <cstdint>
 #include <cstddef>
+#include <cctype>
 
 // C++ STL Header Files
 #include <string>
