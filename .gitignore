@@ -57,6 +57,8 @@ _unused/
 *.out
 *.app
 
+# Nix
+/result
 
 **/.idea
 
