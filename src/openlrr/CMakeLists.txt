@@ -1,17 +1,50 @@
 project(openlrr)
 
 
-add_library(openlrr MODULE
+set(CMDLINE_FILES
         cmdline/CLGen.cpp
         cmdline/CLGen.h
         cmdline/CommandLine.cpp
         cmdline/CommandLine.hpp
+)
+source_group("cmdline" FILES ${CMDLINE_FILES})
 
+set(PLATFORM_FILES
+        platform/d3drm.cpp
+        platform/d3drm.h
+        platform/ddraw.h
+        platform/dinput.h
+        platform/dsound.h
+        platform/targetver.h
+        platform/timeapi.h
+        platform/vfw.h
+        platform/windows.cpp
+        platform/windows.h
+)
+source_group("platform" FILES ${PLATFORM_FILES})
+
+set(ENGINE_FILES
+        engine/colour.h
+        engine/geometry.h
+        engine/Init.cpp
+        engine/Init.h
+        engine/Main.cpp
+        engine/Main.h
+        engine/undefined.h
+        engine/Graphics.cpp
+        engine/Graphics.h
+)
+source_group("engine" FILES ${ENGINE_AUDIO_FILES})
+
+set(ENGINE_AUDIO_FILES
         engine/audio/3DSound.cpp
         engine/audio/3DSound.h
         engine/audio/Sound.cpp
         engine/audio/Sound.h
-        engine/colour.h
+)
+source_group("engine/audio" FILES ${ENGINE_AUDIO_FILES})
+
+set(ENGINE_CORE_FILES
         engine/core/Config.cpp
         engine/core/Config.h
         engine/core/Errors.cpp
@@ -29,6 +62,10 @@ add_library(openlrr MODULE
         engine/core/Utils.h
         engine/core/Wad.cpp
         engine/core/Wad.h
+)
+source_group("engine/core" FILES ${ENGINE_CORE_FILES})
+
+set(ENGINE_DRAWING_FILES
         engine/drawing/Bmp.cpp
         engine/drawing/Bmp.h
         engine/drawing/DirectDraw.cpp
@@ -43,7 +80,10 @@ add_library(openlrr MODULE
         engine/drawing/Images.h
         engine/drawing/TextWindow.cpp
         engine/drawing/TextWindow.h
-        engine/geometry.h
+)
+source_group("engine/drawing" FILES ${ENGINE_DRAWING_FILES})
+
+set(ENGINE_GFX_FILES
         engine/gfx/Activities.cpp
         engine/gfx/Activities.h
         engine/gfx/AnimClone.cpp
@@ -60,10 +100,10 @@ add_library(openlrr MODULE
         engine/gfx/Mesh.h
         engine/gfx/Viewports.cpp
         engine/gfx/Viewports.h
-        engine/Graphics.cpp
-        engine/Graphics.h
-        engine/Init.cpp
-        engine/Init.h
+)
+source_group("engine/gfx" FILES ${ENGINE_GFX_FILES})
+
+set(ENGINE_INPUT_FILES
         engine/input/InputButton.cpp
         engine/input/InputButton.hpp
         engine/input/Input.cpp
@@ -72,22 +112,30 @@ add_library(openlrr MODULE
         engine/input/Keys.h
         engine/input/MouseButtons.cpp
         engine/input/MouseButtons.h
-        engine/Main.cpp
-        engine/Main.h
-        engine/undefined.h
+)
+source_group("engine/input" FILES ${ENGINE_INPUT_FILES})
+
+set(ENGINE_UTIL_FILES
         engine/util/Compress.cpp
         engine/util/Compress.h
         engine/util/Dxbug.cpp
         engine/util/Dxbug.h
         engine/util/Registry.cpp
         engine/util/Registry.h
+)
+source_group("engine/util" FILES ${ENGINE_UTIL_FILES})
+
+set(ENGINE_VIDEO_FILES
         engine/video/Animation.cpp
         engine/video/Animation.h
         engine/video/Animation.hpp
         engine/video/Movie.cpp
         engine/video/Movie.h
         engine/video/Movie.hpp
+)
+source_group("engine/video" FILES ${ENGINE_VIDEO_FILES})
 
+set(GAME_FILES
         game/audio/SFX.cpp
         game/audio/SFX.h
         game/Debug.cpp
@@ -208,17 +256,24 @@ add_library(openlrr MODULE
         game/world/Teleporter.h
         game/world/Water.cpp
         game/world/Water.h
+)
+source_group("game" FILES ${GAME_FILES})
 
-        platform/d3drm.cpp
-        platform/d3drm.h
-        platform/ddraw.h
-        platform/dinput.h
-        platform/dsound.h
-        platform/targetver.h
-        platform/timeapi.h
-        platform/vfw.h
-        platform/windows.cpp
-        platform/windows.h
+add_library(openlrr MODULE
+        ${CMDLINE_FILES}
+
+        ${ENGINE_FILES}
+        ${ENGINE_AUDIO_FILES}
+        ${ENGINE_CORE_FILES}
+        ${ENGINE_DRAWING_FILES}
+        ${ENGINE_GFX_FILES}
+        ${ENGINE_INPUT_FILES}
+        ${ENGINE_UTIL_FILES}
+        ${ENGINE_VIDEO_FILES}
+
+        ${GAME_FILES}
+
+        ${PLATFORM_FILES}
 
         common.h
 

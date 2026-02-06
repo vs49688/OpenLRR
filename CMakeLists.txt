@@ -9,6 +9,7 @@ if (NOT (CMAKE_SYSTEM_PROCESSOR MATCHES "i586.*|i686.*|i386.*|x86.*|amd64.*|AMD6
     message(FATAL_ERROR "Can only build on 32-bit x86, not ${CMAKE_SYSTEM_PROCESSOR}.")
 endif ()
 
+set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
 add_subdirectory(lib/d3drm)
 add_subdirectory(src/openlrr)
